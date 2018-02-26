@@ -1,0 +1,11 @@
+# Compiled Code #
+#######################
+*.class
+*.out
+*.o
+*.html
+# Packages #
+#######################
+*.zip
+*.tar
+
