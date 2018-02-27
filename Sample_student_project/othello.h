@@ -2,7 +2,11 @@
 // CS2401
 // November 23, 2015
 // Project7
-
+/*
+	@file othello.h
+	@brief This file includes the headers for the othello game
+	@author Jarred Utt (documentation)
+*/
 #ifndef OTHELLO_H
 #define OTHELLO_H
 #include "game.h"

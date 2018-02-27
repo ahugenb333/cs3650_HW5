@@ -23,7 +23,11 @@
 //  just wanted to use to make everything look nice
 //
 //***********************************************************
-
+/*
+	@file colors.h
+	@brief This file contains a class to use the escape codes for different colors
+	@author Jarred Utt (documentation)
+*/
 #ifndef COLORS_H
 #define COLORS_H
 
