@@ -3,7 +3,6 @@
 
 all : main.o game.o othello.o
 	g++ main.o game.o othello.o
-	tar -cvf ZinkHW5archive.tar .
 main.o : main.cc othello.h game.h
 	cc -c main.cc
 game.o : game.cc game.h
