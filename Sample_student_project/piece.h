@@ -2,7 +2,11 @@
 // CS2401
 // November 23, 2015
 // Project7
-
+/*
+	@file piece.h
+	@brief This file includes the class to make game pieces
+	@author Jarred Utt (documentation)
+*/
 #ifndef PIECE_H
 #define PIECE_H
 enum color {black, white, blank};

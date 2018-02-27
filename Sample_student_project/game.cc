@@ -1,5 +1,14 @@
-// File: game.cxx
+/* @file game.cc
+	@brief Member function implementations for the file game.h
 
+	This file contains the member function implementations for the
+	the class game.h. This is the core driver of the Othello game
+	package. It includes basic game mechanics and a MIN/MAX AI bot.
+
+	@author Jarred Utt (documentation only)
+	@author Brock Ferrell (all code)
+	@bug Might be unknown bugs (Seg fault?)
+*/
 #include <cassert>    // Provides assert
 #include <climits>    // Provides INT_MAX and INT_MIN
 #include <iostream>   // Provides cin, cout
@@ -17,6 +26,13 @@ namespace main_savitch_14
 //*************************************************************************
 // PUBLIC MEMBER FUNCTIONS
 
+/*
+	@brief Controls the game mechanics using member functions
+	This function determines when the game ends, displays the board
+	status after each move, and determines the winner of the game.
+	@return game::who, the winner
+
+*/
 game::who game::play( )
 // The play function should not be overridden. It plays one round of the
 // game, with the human player moving first and the computer second.
@@ -42,14 +58,26 @@ game::who game::play( )
 
 
 
-//*************************************************************************
-// OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
-
+/*
+ @brief OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
+*/
+/*
+	@brief This function is used to display messages to the console
+		This function uses cout from <iostream> and std namespace to
+		pass a string message to the console.
+	@param message, a const string passed by reference
+	@return void
+*/
 void game::display_message(const string& message) const
 {
 	cout << message;
 }
-
+/*
+	@brief This function retrieves the game move from the user
+		This funtion uses the getline function to retrieve a
+		game move from the terminal user
+	@return answer, a string
+*/
 string game::get_user_move( ) const
 {
 	string answer;
@@ -59,7 +87,13 @@ string game::get_user_move( ) const
 	getline(cin, answer);
 	return answer;
 }
-
+/*
+	@brief This function outputs the current winner
+		This function returns an enumerated value game::who
+		which is either computer or human. It determines the 
+		winner by chip count
+	@return game::who, the winner
+*/
 game::who game::winning()const {
 
 	int value = evaluate();
@@ -74,9 +108,18 @@ game::who game::winning()const {
 
 }
 
-//*************************************************************************
-// PRIVATE FUNCTIONS (these are the same for every game)
 
+/* 
+	PRIVATE FUNCTIONS (these are the same for every game)
+*/
+/*
+	@brief This function evaluates the best possible next move
+		This function uses binary trees to create a new game for
+		every possbile next move. It then evaluates the chip count
+		and decides what the best move to make is.
+	@param look_ahead- an integer, beat_this- an integer
+	@return evaluate- an integer
+*/
 int game::eval_with_lookahead(int look_ahead, int beat_this)
 // Evaluate a board position with lookahead.
 // --int look_aheads:  How deep the lookahead should go to evaluate the move.
@@ -125,6 +168,12 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 	return -best_value;
 }
 
+/*
+	@brief This function makes the computer's move
+		This function uses the eval_with_lookahead function to determine
+		the best move for the compputer to make, then makes this move
+	@return void
+*/
 void game::make_computer_move( )
 {
 	queue<string> moves;
@@ -158,6 +207,14 @@ void game::make_computer_move( )
 	make_move(best_move);
 }
 
+/*
+	@brief This function makes the human move
+		This function takes a string input from the terminal
+		that corresponds to a move on the board. It then checks
+		the legality of that move and if it is legal: makes the move,
+		and if it is not legal: prompts for another move.
+	@return void
+*/
 void game::make_human_move( ) {
 	string move;
 

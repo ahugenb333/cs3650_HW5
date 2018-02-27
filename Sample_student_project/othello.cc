@@ -2,25 +2,27 @@
 // CS2401
 // November 23, 2015
 // Project7
-
+/*
+  @file othello.cc
+  @brief This is the implementation to play Othello
+  @author Jarred Utt (documentation)
+*/
 #include "othello.h"
 
 namespace main_savitch_14
 {
 
+/*
+  @brief This function displays the current status of the board
+    This function uses basic output characters to display a game
+    board with varying colors and a Character/Number grid system.
+  @return void
+*/
 void Othello::display_status()const
 {
   cout << BLUE << "   _______ _______ _______ _______ _______ _______ _______ _______\n";
   cout << BLUE << "   |  A  | |  B  | |  C  | |  D  | |  E  | |  F  | |  G  | |  H  |" << endl;
-
-  for (int y = 0; y < 8; y++)
-  {
-    cout << BLUE << "  " << y + 1 << BLUE << '|' << RESET;
-    for (int x = 0; x < 8; x++)
-    {
-      if (!gameBoard[x][y].is_black() && !gameBoard[x][y].is_white())
-      {
-        cout << B_RED << "     " << RESET;
+eD << "     " << RESET;
       }
       else if (gameBoard[x][y].is_black())
       {

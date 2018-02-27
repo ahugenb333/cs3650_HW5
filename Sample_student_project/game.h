@@ -1,5 +1,9 @@
 // File: game.h (part of the namespace main_savitch_14)
-
+/*
+	@file game.h
+	@brief this file contains the header for the core driver of othello
+	@author Jarred Utt (documentation)
+*/
 
 #ifndef MAIN_SAVITCH_GAME
 #define MAIN_SAVITCH_GAME
