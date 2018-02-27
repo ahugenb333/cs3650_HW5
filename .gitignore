@@ -1,0 +1,14 @@
+# Compiled Code #
+#######################
+*.class
+*.out
+*.o
+*.html
+# Packages #
+#######################
+*.zip
+*.tar
+# MacOS Files #
+#######################
+.DS_Store
+.DS_Store?
