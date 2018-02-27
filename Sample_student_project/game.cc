@@ -1,4 +1,4 @@
-/* @file game.cc
+/** @file game.cc
 	@brief Member function implementations for the file game.h
 
 	This file contains the member function implementations for the
@@ -26,7 +26,7 @@ namespace main_savitch_14
 //*************************************************************************
 // PUBLIC MEMBER FUNCTIONS
 
-/*
+/**
 	@brief Controls the game mechanics using member functions
 	This function determines when the game ends, displays the board
 	status after each move, and determines the winner of the game.
@@ -61,7 +61,7 @@ game::who game::play( )
 /*
  @brief OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
 */
-/*
+/**
 	@brief This function is used to display messages to the console
 		This function uses cout from <iostream> and std namespace to
 		pass a string message to the console.
@@ -72,7 +72,7 @@ void game::display_message(const string& message) const
 {
 	cout << message;
 }
-/*
+/**
 	@brief This function retrieves the game move from the user
 		This funtion uses the getline function to retrieve a
 		game move from the terminal user
@@ -87,7 +87,7 @@ string game::get_user_move( ) const
 	getline(cin, answer);
 	return answer;
 }
-/*
+/**
 	@brief This function outputs the current winner
 		This function returns an enumerated value game::who
 		which is either computer or human. It determines the 
@@ -109,10 +109,10 @@ game::who game::winning()const {
 }
 
 
-/* 
+/**
 	PRIVATE FUNCTIONS (these are the same for every game)
 */
-/*
+/**
 	@brief This function evaluates the best possible next move
 		This function uses binary trees to create a new game for
 		every possbile next move. It then evaluates the chip count
@@ -168,7 +168,7 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 	return -best_value;
 }
 
-/*
+/**
 	@brief This function makes the computer's move
 		This function uses the eval_with_lookahead function to determine
 		the best move for the compputer to make, then makes this move
@@ -207,7 +207,7 @@ void game::make_computer_move( )
 	make_move(best_move);
 }
 
-/*
+/**
 	@brief This function makes the human move
 		This function takes a string input from the terminal
 		that corresponds to a move on the board. It then checks
