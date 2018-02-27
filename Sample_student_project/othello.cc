@@ -3,12 +3,22 @@
 // November 23, 2015
 // Project7
 
-#include "othello.h"
+//@file othello.cc
+//@brief This is the implementation to play Othello
+//@author Jonahtna Feige (documentation only)
+//@author Brock Ferrell (all code)
+#include "othello.h" // Provides definition of othello class
 
 namespace main_savitch_14
 {
-
+// PUBLIC MEMBER FUNCTIONS
 void Othello::display_status()const
+/*
+  @brief This function displays the current status of the board
+    This function uses basic output characters to display a game
+    board with varying colors and a Character/Number grid system.
+  @return void
+*/
 {
   cout << BLUE << "   _______ _______ _______ _______ _______ _______ _______ _______\n";
   cout << BLUE << "   |  A  | |  B  | |  C  | |  D  | |  E  | |  F  | |  G  | |  H  |" << endl;
@@ -48,9 +58,15 @@ void Othello::display_status()const
   cout << "\nEnter a move in the format(letter,number) (Ex: A3)" << endl;
 }
 
-void Othello::make_move(const string& move) {
-
-  int c, r;
+void Othello::make_move(const string& move) 
+/*
+  @brief This function sets up the selected move
+    This function uses .set_white and .set_black 
+    to set the next state of the board
+  @return void
+*/
+{
+  int c, r;                         //The vertical and horizontal move
   c = int(toupper(move[0]) - 'A');
   r = int(move[1] - '1');
 
@@ -191,7 +207,11 @@ void Othello::make_move(const string& move) {
 
 
 void Othello::restart() {
-
+/*
+  @brief This function sets the board back to its begining 
+         state before the board had any moves on it.
+  @return void
+*/
   gameBoard[3][3].set_white();
   gameBoard[3][4].set_black();
   gameBoard[4][3].set_black();
@@ -204,12 +224,17 @@ void Othello::restart() {
 }
 
 bool Othello::is_legal(const string& move)const {
-
-  int c, r;
+  /*
+  @ This fuction cheks the legality of a move
+    it takes a string, and checks every possible 
+    space to check for a match.
+  @return bool
+*/
+  int c, r;                         //The vertical and horizontal move
   c = int(toupper(move[0]) - 'A');
   r = int(move[1] - '1');
 
-// BLACK'S TURN
+//@param message BLACK'S TURN
   if (next_mover() == HUMAN) {
     if (gameBoard[c][r].is_blank()) {
       if (gameBoard[c][r - 1].is_white()) {
@@ -295,7 +320,7 @@ bool Othello::is_legal(const string& move)const {
     }
   }
 
-// WHITE'S TURN
+//@param message, WHITE'S TURN
   if (next_mover() == COMPUTER) {
     if (gameBoard[c][r].is_blank()) {
       if (gameBoard[c][r - 1].is_white()) {
@@ -381,9 +406,14 @@ bool Othello::is_legal(const string& move)const {
 }
 
 void Othello::countingPieces() {
+/*
+  @ This fuction counts each peice on the 
+    board then outsputs the results
+  @return void
+*/
 
-  int black = 0;
-  int white = 0;
+  int black = 0;    //counts about of black peice
+  int white = 0;    //counts about of white peice
 
   for (int b = 0; b < 8; b++) {
     for (int a = 0; a < 8; a++) {
@@ -401,17 +431,28 @@ void Othello::countingPieces() {
 }
 
 bool Othello::is_game_over()const {
+    /*
+  @ This function looks at the four end conditions
+    after every move, and checks for nd conditons.
+  @return bool
+*/
 
   if (skips == 2 || openSpots == 0 || black == 0 || white == 0) {
     cout << "The game is over.\n";
-    return true;
+    return true;    // if game is over
   }
   else {
-    return false;
+    return false;   //if game is not over
   }
 }
 
 void Othello::whosTurn() {
+/*
+  @ This fuction uses the next_mover counter
+    to find who is the next person to go.
+  @return void
+*/
+
   if (next_mover() == COMPUTER) {
     cout << "\nWhite's Turn!" << endl;
   }
@@ -422,10 +463,20 @@ void Othello::whosTurn() {
 }
 
 void Othello::make_skips() {
+/*
+  @ This fuction increases the skip counter.
+  @return void
+*/
+
   skips++;
 }
 
 game::who Othello::winning()const {
+/*
+  @ This fuction counts each peice on the 
+    board then outputs who is currently winning
+  @return game::who
+*/
 
   if (black > white) {
     return last_mover();
@@ -438,9 +489,15 @@ game::who Othello::winning()const {
 }
 
 int Othello::evaluate()const {
+ /*
+  @ This fuction looks at every possible move for
+    a computer and eturns the best possible move
+    thought an integer value.
+  @return int
+*/
 
-  int tmp_white = w;
-  int tmp_black = b;
+  int tmp_white = w;    // used to check score of white
+  int tmp_black = b;    // used to check score of black
 
   if (gameBoard[0][0].is_white() || gameBoard[7][7].is_white() || gameBoard[0][7].is_white() || gameBoard[7][0].is_white()) {
     tmp_white += 5;
@@ -457,9 +514,15 @@ int Othello::evaluate()const {
 }
 
 void Othello::compute_moves(std::queue<std::string>& moves)const {
-  string r;
-  string c;
-  string move;
+ /*
+  @ This fuction generates every possible move 
+  on a board and checks to find which are legal to use.
+  @return void
+*/
+
+  string r;       //The vertical move
+  string c;       //The horizontal move
+  string move;    //Total move
 
   for (int i = 0; i < 8; i++) {
     c = i + 'A';
