@@ -2,7 +2,7 @@
 // CS2401
 // November 23, 2015
 // Project7
-/*
+/**
   @file othello.cc
   @brief This is the implementation to play Othello
   @author Jarred Utt (documentation)
@@ -12,11 +12,10 @@
 namespace main_savitch_14
 {
 
-/*
+/**
   @brief This function displays the current status of the board
     This function uses basic output characters to display a game
     board with varying colors and a Character/Number grid system.
-  @return void
 */
 void Othello::display_status()const
 {
@@ -192,6 +191,12 @@ void Othello::make_move(const string& move) {
 }
 
 
+/**
+ @brief This function restarts the game board.
+ There are by default 60 open spots and a few spaces that need to be set to black or white.
+ The number of skips gets reset
+ Because we set 2 spaces each to black and white, black and white are each reset to 2.
+*/
 void Othello::restart() {
 
   gameBoard[3][3].set_white();
